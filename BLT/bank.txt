@@ -1,0 +1,20 @@
+//SPDX-License-Identifier: UNLICENSED;
+pragma solidity >=0.8.0;
+contract Bannk{
+    uint256 balance = 0;
+
+    function withdraw() payable public {
+        require(balance > 0,"You dont have enough balance");
+        payable(msg.sender).transfer(balance);
+        balance = 0;
+    }
+    function Deposit()payable public{
+        require(msg.value > 0 ,"amount should be greater than zero");
+        balance = balance+msg.value;
+    
+    }
+
+    function showBalance() public view returns(uint){
+        return balance;
+    }
+}
