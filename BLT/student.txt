@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >=0.7.0;
+
+contract StudentManagement {
+    
+    struct Student {
+        int stud_id;
+        string name;
+        string department;
+    }
+
+    Student[] public students; // Array to store students
+
+    // Function to add a student
+    function addStudent(int _id, string memory _name, string memory _department) public {
+        students.push(Student(_id, _name, _department));
+    }
+
+    // Fallback function to handle any ether sent to the contract
+    fallback() external payable {
+        students.push(Student(7, "XYZ", "Mechanical"));
+     }
+    receive() external payable {}
+    
+}
